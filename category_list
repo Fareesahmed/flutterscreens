@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Product Categories',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: CategoryScreen(),
+    );
+  }
+}
+
+class CategoryScreen extends StatelessWidget {
+  // List of 20 product categories
+  final List<String> categories = List<String>.generate(
+    20,
+    (index) => 'Category ${index + 1}',
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(' Categories'),
+      ),
+      body: ListView.builder(
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: EdgeInsets.all(20),
+            child: ListTile(
+              leading: Icon(Icons.category),
+              title: Text(categories[index]),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
